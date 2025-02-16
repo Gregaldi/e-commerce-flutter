@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                     8,
                   ),
                   const Text(
-                    "Login untuk melanjutkan perjalanan serumu bersama Ayo Piknik",
+                    "Login untuk melanjutkan belanja serumu bersama e-commerce",
                     style: TextStyle(
                       fontSize: 14.0,
                       color: AppColors.textBlack2,
@@ -202,7 +202,7 @@ class _LoginPageState extends State<LoginPage> {
                       );
                     },
                   ),
-                 
+
                   const SpaceHeight(16),
                   const Row(
                     children: [
@@ -230,35 +230,35 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   const SpaceHeight(16),
-                  const SpaceHeight(32),
-                  Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        // context.push(const RegisterPage());
-                      },
-                      child: RichText(
-                        text: const TextSpan(
-                          text: '',
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'Don’t have an account?',
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                color: AppColors.textBlack2,
-                              ),
-                            ),
-                            TextSpan(
-                              text: ' Register',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14.0,
-                                  color: AppColors.primary),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                  // const SpaceHeight(32),
+                  // Center(
+                  //   child: GestureDetector(
+                  //     onTap: () {
+                  //       // context.push(const RegisterPage());
+                  //     },
+                  //     child: RichText(
+                  //       text: const TextSpan(
+                  //         text: '',
+                  //         children: <TextSpan>[
+                  //           TextSpan(
+                  //             text: 'Don’t have an account?',
+                  //             style: TextStyle(
+                  //               fontSize: 14.0,
+                  //               color: AppColors.textBlack2,
+                  //             ),
+                  //           ),
+                  //           TextSpan(
+                  //             text: ' Register',
+                  //             style: TextStyle(
+                  //                 fontWeight: FontWeight.w500,
+                  //                 fontSize: 14.0,
+                  //                 color: AppColors.primary),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
