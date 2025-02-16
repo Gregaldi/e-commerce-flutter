@@ -11,22 +11,28 @@ import 'package:ecommerce/data/model/response/login_response_model.dart';
 import 'package:http/http.dart' as http;
 
 class AuthRemoteDatasource {
-  final dio = Dio();
+  // final dio = Dio();
   Future<Either<String, LoginResponseModel>> login(
       LoginRequestModel model) async {
-    final response = await dio.post(
-      '${Variables.baseUrl}/auth/login',
-      options: Options(
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
+    final response = await http.post(
+      Uri.parse(
+        '${Variables.baseUrl}/auth/login',
       ),
-      data: jsonEncode(model.toMap()),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      // options: Options(
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Accept': 'application/json',
+      //   },
+      // ),
+      body: jsonEncode(model.toMap()),
     );
-    log(response.data);
+    log(response.body);
     if (response.statusCode == 200) {
-      return Right(LoginResponseModel.fromJson(jsonDecode(response.data)));
+      return Right(LoginResponseModel.fromJson(jsonDecode(response.body)));
     } else {
       return const Left('Failed to Login');
     }
@@ -38,23 +44,25 @@ class AuthRemoteDatasource {
       'Accept': 'application/json',
     };
 
-    // final url = Uri.parse('${Variables.baseUrl}/users');
-    final response = await dio.post(
-      '${Variables.baseUrl}/users',
-      options: Options(
-        headers: header,
-      ),
-      data: json.encode(model),
+    final url = Uri.parse('${Variables.baseUrl}/users');
+    final response = await http.post(
+      // '${Variables.baseUrl}/users',
+      url,
+      headers: header,
+      // options: Options(
+      //   headers: header,
+      // ),
+      body: json.encode(model),
     );
 
     log("statusCode: ${response.statusCode}");
-    log("body: ${response.data}");
+    log("body: ${response.body}");
 
     if (response.statusCode == 200 || response.statusCode == 201) {
-      final message = jsonDecode(response.data)['message'];
+      final message = jsonDecode(response.body)['message'];
       return Right(message);
     } else {
-      return Left("Register Failed : ${jsonDecode(response.data)['message']}");
+      return Left("Register Failed : ${jsonDecode(response.body)['message']}");
     }
   }
 }
